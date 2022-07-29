@@ -1,21 +1,18 @@
 package com.foodbackend.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+
 
 @Document("food")
 public class Food {
-    @Id
     private long foodID;
-    @Column(nullable = false)
+    //@Column(nullable = false)
     private String restaurantID;
-    @Column(nullable = false,length = 55)
+    //@Column(nullable = false,length = 55)
     private String foodName;
-    @Column(nullable = false,length = 30)
+    //@Column(nullable = false,length = 30)
     private String cuisineType;
     private double price;
 

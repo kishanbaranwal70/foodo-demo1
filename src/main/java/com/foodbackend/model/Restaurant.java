@@ -1,14 +1,13 @@
 package com.foodbackend.model;
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+
 
 @Document("Restaurant")
 public class Restaurant {
-    @Id
-    @Column(name="_id")
+    //@Column(name="_id")
     private long restaurantID;
     private String name;
     private String address;

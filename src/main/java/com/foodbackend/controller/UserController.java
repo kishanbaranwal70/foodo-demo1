@@ -15,7 +15,9 @@ import java.util.Set;
 
 import java.util.ArrayList;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 
+@CrossOrigin
 @RestController
 public class UserController {
     @Autowired

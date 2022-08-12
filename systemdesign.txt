@@ -1,0 +1,111 @@
+package mainpackage;
+
+
+interface FlyAbility{
+    void fly();
+}
+
+class WithWings implements FlyAbility{
+    public void fly(){
+        System.out.println("I am flying using my wings");
+    }
+}
+
+class Cantfly implements  FlyAbility{
+    public void fly(){
+        System.out.println("Cannot Fly");
+    }
+}
+
+class WithJetPack implements  FlyAbility{
+    public void fly(){
+        System.out.println("I am flying using Jetpack");
+    }
+}
+
+
+interface AttackAbility{
+    void attack();
+}
+
+class AttackWithHands implements AttackAbility{
+    public void attack(){
+        System.out.println("I dont need any weapons");
+    }
+}
+
+class AttackWithGuns implements AttackAbility{
+    public void attack(){
+        System.out.println("Attacking with guns");
+    }
+}
+
+
+
+
+abstract  class Player {
+    //FlyAbility flyAbility = new WithWings;
+    FlyAbility flyAbility;
+    AttackAbility attackAbility;
+
+    public void setAttackAbility(AttackAbility attackAbility) {
+        this.attackAbility = attackAbility;
+    }
+
+    public void setFlyAbility(FlyAbility flyAbility) {
+        this.flyAbility = flyAbility;
+    }
+
+    public void eat(){
+        System.out.println("I am eating");
+    }
+
+    public void sleep(){
+        System.out.println(" I am Sleeping");
+    }
+    public void performAttack(){
+        attackAbility.attack();
+    }
+    public void performFly(){
+        flyAbility.fly();   //fly function is encapsulated to player
+    }
+
+    abstract void display();  //this is abstraction
+
+}
+
+class Alex extends Player{
+    Alex(FlyAbility flyAbility,AttackAbility attackAbility)
+    {
+        super.flyAbility=flyAbility;
+        super.attackAbility=attackAbility;
+    }
+
+    public void display(){
+        System.out.println("Hi, I am Alex");
+    }
+}
+
+class Sam extends Player{
+    Sam(FlyAbility flyAbility,AttackAbility attackAbility)
+    {
+        super.flyAbility=flyAbility;
+        super.attackAbility=attackAbility;
+    }
+
+    public void display(){
+        System.out.println("Hi, I am Sam");
+    }
+}
+
+public class Demo {
+    public static void main(String[] args) {
+            Player player = new Alex(new WithJetPack(),new AttackWithHands());
+            player.display();
+            player.performFly();
+            player.performAttack();
+            player.setFlyAbility(new Cantfly());
+            player.display();
+            player.performFly();
+    }
+}
